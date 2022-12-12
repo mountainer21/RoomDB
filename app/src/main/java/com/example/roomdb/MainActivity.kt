@@ -2,7 +2,6 @@ package com.example.roomdb
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import com.example.roomdb.databinding.ActivityMainBinding
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         val rollNo = binding.etRollNo.text.toString()
 
         if(firstName.isNotEmpty() && lastName.isNotEmpty() && rollNo.isNotEmpty()     ) {
-            val student = Student(
+            val student = Client(
                 null, firstName, lastName, rollNo.toInt()
             )
             GlobalScope.launch(Dispatchers.IO) {
@@ -70,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         if (rollNo.isNotEmpty()){
 
-            lateinit var student : Student
+            lateinit var student : Client
 
             GlobalScope.launch {
 
@@ -84,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private suspend fun displayData(student: Student){
+    private suspend fun displayData(student: Client){
 
         withContext(Dispatchers.Main){
 
